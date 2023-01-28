@@ -9,13 +9,13 @@ bmi.get("/getProfile",auth, async (req, res) => {
     const {email} = req.body
 
     const bmi = await BmiData.find({email:email})
-    res.send({"msg":bmi,email})
+    res.send({"msg":bmi})
 })
 
 
 bmi.post("/calculateBMI",auth, async (req, res) => {
     const { height,weight} = req.body;
-    let Bmi = height/weight
+    let Bmi = weight/(2*height)
     const result = await BmiData.create({height,weight,Bmi})
     res.send("BMI data stored")
 
