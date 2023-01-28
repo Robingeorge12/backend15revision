@@ -6,8 +6,8 @@ const signup = Router()
 
 signup.post("/", async (req, res) => {
 
-    const { email, password } = req.body
-    console.log(email, password)
+    const { email, password,name } = req.body
+    console.log(email, password,name)
     const check = await UserData.findOne({ email: email })
     console.log(check)
     if (check) {
@@ -22,8 +22,10 @@ signup.post("/", async (req, res) => {
             } else {
 
                 const new_userData = new UserData({
+                    name,
                     email,
                     password: hash_pass
+                    
                 })
                 // await new_userData.save()
                 // res.send({ msg: "signup sucess" })

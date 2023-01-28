@@ -8,8 +8,8 @@ const login = Router()
 
 login.post("/", async (req, res) => {
 
-    const { email, password } = req.body
-    console.log(email, password)
+    const { email, password,name } = req.body
+    console.log(email, password,name)
     const check = await UserData.findOne({ email: email })
 
     if (check) {
